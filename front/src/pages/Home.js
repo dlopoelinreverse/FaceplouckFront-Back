@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import { UidContext } from "../components/AppContext";
 
 import CreateFormPost from "../components/Post/CreateFormPost";
-import Log from "../components/Log";
 import Feed from "../components/Feed/Feed";
+import WelecomeModal from "../components/Log/WelecomeModal";
 
 const Home = () => {
   const uid = useContext(UidContext);
@@ -12,9 +12,8 @@ const Home = () => {
     <div className="home page">
       <div className="main">
         <div className="home-header">
-          {uid ? <CreateFormPost /> : <Log signIn={true} signUp={false} />}
+          {uid ? <CreateFormPost /> : <WelecomeModal />}
         </div>
-
         <Feed />
       </div>
       <div className="main-right-part">

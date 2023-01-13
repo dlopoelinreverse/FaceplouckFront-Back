@@ -44,9 +44,6 @@ const PostCard = ({ postId, postsData, type }) => {
         <li className="post-card">
           <div className="post-header">
             <div className="left-part">
-              {/* {type && type === "profil-feed"
-                ? null
-                : */}
               {!isEmpty(usersData[0]) &&
                 usersData
                   .filter((user) => user._id === post.posterId)
@@ -57,8 +54,6 @@ const PostCard = ({ postId, postsData, type }) => {
                       fromType={type}
                     />
                   ))}
-
-              {/* ))} */}
             </div>
             <div className="right-part">
               <p>{dateParser(post.createdAt)}</p>
@@ -91,41 +86,15 @@ const PostCard = ({ postId, postsData, type }) => {
               </>
             )}
             {post.picture && (
-              // <>
-              //   {editPost ? (
-              //     <>
-              //       <img src={post.picture} alt="Photo du post" />
-              //       <div className="edit-picture">
-              //         <input
-              //           type="file"
-              //           onChange={(e) =>
-              //             // setNewImage(e.target.files[0])
-              //             console.log(e.target.files[0])
-              //           }
-              //         />
-              //         <button>modifier l'image</button>
-              //       </div>
-              //     </>
-              //   ) : (
-              <img
-                // src={removeDotOnPics(post.picture)}
-                // src={`${process.env.REACT_APP_API_URL}${post.picture}`}
-                src={post.picture}
-                alt="Illustration du post"
-              />
-              //   )}
-              // </>
+              <img src={post.picture} alt="Illustration du post" />
             )}
           </div>
 
-          {/* {type === "show-comments" ? null : ( */}
           <div className="reactions-container">
             <LikeButton post={post} />
             {(type === "feed" || type === "profil-feed") && (
               <Link to={`/post/comments/${post._id}`}>
-                <span
-                //  onClick={() => dispatch(showPostComment(post))}
-                >
+                <span>
                   <img src="/img/icons/message1.svg" alt="Commentaire" />
                   {post.comments.length ? post.comments.length : null}
                 </span>
@@ -139,7 +108,6 @@ const PostCard = ({ postId, postsData, type }) => {
             )}
           </div>
           {type === "post-comments" && <CommentContainer post={post} />}
-          {/* )} */}
         </li>
       )}
     </>

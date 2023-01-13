@@ -1,12 +1,10 @@
 import React, { useState } from "react";
 import SignInForm from "./SignInForm";
 import SignUpForm from "./SignUpForm";
-import TesterLog from "./TesterLog";
 
 const Log = ({ signIn, signUp }) => {
   const [signUpModal, setSignUpModal] = useState(signUp);
   const [signInModal, setSignInModal] = useState(signIn);
-  const [testerModal, setTesterModal] = useState(false);
 
   const handleModals = (e) => {
     if (e.target.id === "register") {
@@ -15,10 +13,6 @@ const Log = ({ signIn, signUp }) => {
     } else if (e.target.id === "login") {
       setSignUpModal(false);
       setSignInModal(true);
-    } else if (e.target.id === "tester") {
-      setTesterModal(true);
-      setSignUpModal(false);
-      setSignInModal(false);
     }
   };
 
@@ -40,13 +34,9 @@ const Log = ({ signIn, signUp }) => {
           >
             Se connecter
           </li>
-          {/* <li id="tester" onClick={handleModals}>
-          Testeur
-        </li> */}
         </ul>
         {signUpModal && <SignUpForm />}
         {signInModal && <SignInForm />}
-        {/* {testerModal && <TesterLog />} */}
       </div>
     </div>
   );
